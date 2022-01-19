@@ -8,8 +8,6 @@ import pandas as pd
 import numpy as np
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
-
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.model_selection import train_test_split
