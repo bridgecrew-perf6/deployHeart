@@ -1,1 +1,108 @@
 
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>HEART DISEASE PREDICTION</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Presence Of heart Disease</h1>
+     <h3> Enter the following values to predict the possiblity of heart disorders</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+	    <p>Enter your age:</p>
+    	<input type="text" name="age" placeholder="AGE" required="required" />
+		
+		<p>Please select your gender:</p>
+		<input type="radio" id="male" name="sex" value="1">
+        <label for="male">MALE</label><br>
+        <input type="radio" id="female" name="sex" value="0">
+        <label for="female">FEMALE</label><br> 
+		
+		<p>Please choose type of chest pain:</p>
+		<input type="radio" id="0cp" name="cp" value="0">
+        <label for="0cp">Typical angina: chest pain related decrease blood supply to the heart</label><br>
+        <input type="radio" id="1cp" name="cp" value="1">
+        <label for="1cp">Atypical angina: chest pain not related to heart</label><br>
+		<input type="radio" id="2cp" name="cp" value="2">
+        <label for="2cp">Atypical angina: chest pain not related to heart</label><br>
+        <input type="radio" id="3cp" name="cp" value="3">
+        <label for="3cp">Asymptomatic: chest pain not showing signs of disease</label><br> 
+		
+		<p>Enter your Resting Blood Pressure</p>
+		<input type="text" name="trestbps" placeholder="BLOOD PRESSURE" required="required" />
+		
+		<p>Enter your Cholesterol:</p>
+        <input type="text" name="chol" placeholder="CHOLESTEROL" required="required" />
+		
+		<p>Enter your Fasting Blood Sugar:</p>
+		<input type="text" name="fbs" placeholder="FASTING BLOOD SUGAR" required="required" />
+		
+		<p>Please choose type of ECG:</p>
+		<input type="radio" id="0ecg" name="restecg" value="0">
+        <label for="0ecg">Nothing to note</label><br>
+        <input type="radio" id="1ecg" name="restecg" value="1">
+        <label for="1ecg">ST-T Wave abnormality can range from mild symptoms to severe problems signals non-normal heart beat</label><br>
+		<input type="radio" id="2ecg" name="restecg" value="2">
+        <label for="2ecg">Possible or definite left ventricular hypertrophy Enlarged heart's main pumping chamber</label><br>
+		
+		<p>Enter your Maximum Heart Rate:</p>
+        <input type="text" name="thalach" placeholder="MAX HEART RATE (beats/s)" required="required" />
+		
+		<p>Is there Exercise Induced Pain/Angina</p>
+		<input type="radio" id="angina" name="exang" value="1">
+        <label for="male">YES</label><br>
+        <input type="radio" id="noangina" name="exang" value="0">
+        <label for="female">NO</label><br> 
+		
+		<p>Enter your Relative ST depression:</p>
+		<input type="text" name="oldpeak" placeholder="RELATIVE ST" required="required" />
+		
+		<p>Please choose type of ST slope:</p>
+		<input type="radio" id="0slope" name="slope" value="0">
+        <label for="0slope">Upsloping: better heart rate with excercise (uncommon)</label><br>
+        <input type="radio" id="1slope" name="slope" value="1">
+        <label for="1slope">Flatsloping: minimal change (typical healthy heart)</label><br>
+		<input type="radio" id="2slope" name="slope" value="2">
+        <label for="2slope">Downsloping: signs of unhealthy heart</label><br>
+		
+		<p>Please choose number of major vessels colored by flourosopy colored vessel:</p>
+		<input type="radio" id="0ca" name="ca" value="0">
+        <label for="0ca">0 blood vessel</label><br>
+        <input type="radio" id="1ca" name="ca" value="1">
+        <label for="1ca">1 blood vessel</label><br>
+		<input type="radio" id="2ca" name="ca" value="2">
+        <label for="2ca">2 blood vessel</label><br>
+        <input type="radio" id="3ca" name="ca" value="3">
+        <label for="3ca">3 blood vessel</label><br> 
+		
+		<p>Please choose value for Thalium Stress Result:</p>
+		<input type="radio" id="0thal" name="thal" value="3">
+        <label for="0thal">normal</label><br>
+        <input type="radio" id="1thal" name="thal" value="6">
+        <label for="1thal">fixed defect: used to be defect but ok now</label><br>
+		<input type="radio" id="2thal" name="thal" value="7">
+        <label for="2thal">reversable defect: no proper blood movement when excercising</label><br>
+		
+        <button type="submit" class="btn">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
