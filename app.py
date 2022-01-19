@@ -51,10 +51,7 @@ if __name__ == "__main__":
 # In[12]:
 
 
-get_ipython().run_line_magic('tb', '')
 
-
-# In[ ]:
 
 
 
